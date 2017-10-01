@@ -1,0 +1,42 @@
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "com.gradle.publish:plugin-publish-plugin:0.9.8"
+  }
+}
+
+group "earth.cube.gradle.plugins"
+
+version "1.0-SNAPSHOT"
+
+sourceCompatibility = 1.7
+
+dependencies {
+	compile gradleApi()
+	compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.8.0.201706111038-r'
+	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+//	compile group: 'org.ehcache', name: 'ehcache', version: '3.4.0'
+
+	testCompile group: 'commons-io', name: 'commons-io', version: '2.5'
+
+
+}
+
+pluginBundle {
+	website = 'http://www.gradle.org/'
+	vcsUrl = 'https://github.com/gradle/gradle'
+	description = 'Greetings from here!'
+	tags = ['greetings', 'salutations']
+	
+	plugins {
+		greetingsPlugin {
+	 		group = 'earth.cube'   	
+			id = 'earth.cube.github'
+	 		displayName = 'Gradle Greeting plugin'
+		}
+	}
+}

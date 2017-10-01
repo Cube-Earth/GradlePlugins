@@ -3,9 +3,6 @@ apply plugin: 'eclipse'
 
 subprojects { Project p ->
 
-	group "earth.cube.gradleplugins"
-	version "1.0-beta-1"
-
     apply plugin: 'java'
 	apply plugin: 'eclipse'
 	apply plugin: 'maven'
@@ -108,15 +105,13 @@ eclipse{
 				    from javadoc
 				    classifier = 'javadoc'
 				} 	
+				
+				artifacts {
+					archives sourceJar, packageJavadoc
+				}
     	}
   	}
   	
-  	configure(subprojects.findAll {it.hasProperty('publish')}) {
-            println 'x $it.name'
-    hello {
-            println '- I love to spend time in the arctic waters.'
-        }
-    }
 
 
 }
