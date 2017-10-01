@@ -105,10 +105,12 @@ eclipse{
 				    from javadoc
 				    classifier = 'javadoc'
 				} 	
-				
+
+/*				
 				artifacts {
 					archives sourceJar, packageJavadoc
 				}
+*/
     	}
   	}
   	
