@@ -74,43 +74,11 @@ eclipse{
 			    	publications {
 			        	mavenJava(MavenPublication) {
 			            	from components.java
-			
-			 				artifact sourceJar
-							artifact packageJavadoc
 						}
 					}
 			  	}
 			  	
-				javadoc {
-					source = sourceSets.main.allJava
-					classpath = configurations.compileClasspath
-					
-					exclude '*Impl.java'
 				
-				  	options
-				  	{
-				    	setMemberLevel JavadocMemberLevel.PUBLIC
-				    	setAuthor true
-				
-				    	links "https://docs.oracle.com/javase/8/docs/api/"
-				 	}
-				}
-				
-				task sourceJar(type: Jar) {
-				  classifier = 'sources'
-				  from sourceSets.main.allJava
-				}
-				
-				task packageJavadoc(type: Jar) {
-				    from javadoc
-				    classifier = 'javadoc'
-				} 	
-
-/*				
-				artifacts {
-					archives sourceJar, packageJavadoc
-				}
-*/
     	}
   	}
   	

@@ -9,8 +9,8 @@ import org.gradle.api.artifacts.PublishArtifact;
 import org.gradle.api.tasks.TaskAction;
 
 import earth.cube.gradle.plugins.github.config.GithubAssetConfig;
+import earth.cube.gradle.plugins.github.config.GithubCacheExtension;
 import earth.cube.gradle.plugins.github.config.GithubExtension;
-import earth.cube.gradle.plugins.github.model.Cache;
 import earth.cube.gradle.plugins.github.model.GithubRelease;
 
 public class UploadArchivesTask extends DefaultTask {
@@ -18,8 +18,7 @@ public class UploadArchivesTask extends DefaultTask {
 	@TaskAction
 	public void upload() throws IOException {
 		GithubExtension config = (GithubExtension) getProject().getExtensions().findByName("github");
-		GithubRelease release = Cache.getRelease(config);
-		release.setLogger(getLogger());
+		GithubRelease release = GithubCacheExtension.get(getProject()).getRelease(config, getLogger());
 		
 		GithubAssetConfig assetConfig = config.asset;
 		

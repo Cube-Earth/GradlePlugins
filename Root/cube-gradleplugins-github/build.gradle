@@ -1,5 +1,7 @@
 // call 'gradle publishPlugins' for uploading this plugin to the gradle plugin portal
 
+ext.maven_aware=true
+
 buildscript {
   repositories {
     maven {
@@ -37,11 +39,11 @@ pluginBundle {
 	tags = ['cube.earth', 'github', 'continuous delivery', 'release']
 	
 	plugins {
-		greetingsPlugin {
-	 		group = 'earth.cube'
+		githubPlugin {
+//	 		group = 'earth.cube'
 			id = 'earth.cube.github'
 			version = '1.0.0'
-	 		displayName = 'Github Plugin (cube.earth)'
+	 		displayName = 'Github plugin (cube.earth)'
 		}
 	}
 }
