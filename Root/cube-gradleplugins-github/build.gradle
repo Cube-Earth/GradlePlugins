@@ -1,3 +1,5 @@
+// call 'gradle publishPlugins' for uploading this plugin to the gradle plugin portal
+
 buildscript {
   repositories {
     maven {
@@ -8,6 +10,8 @@ buildscript {
     classpath "com.gradle.publish:plugin-publish-plugin:0.9.8"
   }
 }
+
+apply plugin: "com.gradle.plugin-publish"
 
 group "earth.cube.gradle.plugins"
 
@@ -27,16 +31,17 @@ dependencies {
 }
 
 pluginBundle {
-	website = 'http://www.gradle.org/'
-	vcsUrl = 'https://github.com/gradle/gradle'
-	description = 'Greetings from here!'
-	tags = ['greetings', 'salutations']
+	website = 'https://github.com/Cube-Earth/GradlePlugins/tree/master/Root/cube-gradleplugins-github'
+	vcsUrl = 'https://github.com/Cube-Earth/GradlePlugins/tree/master/Root/cube-gradleplugins-github'
+	description = 'Plugin for creating Github releases and uploading assets.'
+	tags = ['cube.earth', 'github', 'continuous delivery', 'release']
 	
 	plugins {
 		greetingsPlugin {
-	 		group = 'earth.cube'   	
+	 		group = 'earth.cube'
 			id = 'earth.cube.github'
-	 		displayName = 'Gradle Greeting plugin'
+			version = '1.0.0'
+	 		displayName = 'Github Plugin (cube.earth)'
 		}
 	}
 }
