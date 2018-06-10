@@ -1,1 +1,1 @@
-include ':cube-gradleplugins-github', ':cube-gradleplugins-github-test'
+include ':cube-gradleplugins-github', ':cube-gradleplugins-github-test', ':cube-gradleplugins-scm', ':cube-gradleplugins-commons', ':cube-gradleplugins-commons-test'

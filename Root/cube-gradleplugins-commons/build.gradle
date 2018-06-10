@@ -1,0 +1,42 @@
+// call 'gradle publishPlugins' for uploading this plugin to the gradle plugin portal
+
+ext.maven_aware=true
+
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "com.gradle.publish:plugin-publish-plugin:0.9.8"
+  }
+}
+
+apply plugin: "com.gradle.plugin-publish"
+
+group "earth.cube.gradle.plugins"
+
+version "1.0-SNAPSHOT"
+
+sourceCompatibility = 1.7
+
+dependencies {
+	compile gradleApi()
+}
+
+pluginBundle {
+	website = 'https://github.com/Cube-Earth/GradlePlugins/tree/master/Root/cube-gradleplugins-commons'
+	vcsUrl = 'https://github.com/Cube-Earth/GradlePlugins/tree/master/Root/cube-gradleplugins-commons'
+	description = 'Plugin for common stuff like XML file modifications, etc.'
+	tags = ['cube.earth', 'commons', 'continuous delivery']
+	
+	plugins {
+		githubPlugin {
+//	 		group = 'earth.cube'
+			id = 'earth.cube.commons'
+			version = '1.0.0'
+	 		displayName = 'Commons plugin (cube.earth)'
+		}
+	}
+}

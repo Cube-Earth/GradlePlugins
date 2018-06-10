@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        mavenLocal()
+		maven { url "http://repo.maven.apache.org/maven2" }        
+    }
+    dependencies {
+        classpath group: 'earth.cube.gradle.plugins', name: 'cube-gradleplugins-commons',
+                  version: '1.0-SNAPSHOT'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'earth.cube.commons'
+
+task query {
+	doLast {
+		println "xxx" + 
+			xml.getString("$projectDir/test.xml", 
+				"/o:level1/level2/@attr",
+				"o=http://cube.earth/schemas/o")
+	}
+}
+
+task copy(type: Copy) {
+    from file("test.txt")
+    into xml.getString("$projectDir/" + "test.xml".toLowerCase(), "/level1/level2/@filepath")
+}
+
+task xml {
+	doLast {
+		def stringWriter = new StringWriter()
+        def peopleBuilder = new groovy.xml.MarkupBuilder(stringWriter)
+        peopleBuilder.project(default:"build") {
+            target(name:"build") {
+                "cube.build"(project:"a", failonerror:"true")
+                peopleBuilder.delete("file":"test.txt")
+            }
+        }
+        def xml = stringWriter.toString()
+        println xml		
+	}
+}

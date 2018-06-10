@@ -1,0 +1,28 @@
+buildscript {
+    repositories {
+        mavenLocal()
+		maven { url "http://repo.maven.apache.org/maven2" }        
+    }
+    dependencies {
+        classpath group: 'earth.cube.gradle.plugins', name: 'cube-gradleplugins-commons',
+                  version: '1.0-SNAPSHOT'
+    }
+}
+apply plugin: 'earth.cube.commons'
+
+task modify(type: earth.cube.gradle.plugins.commons.xml_modification.ModifyXmlTask) {
+    file {
+    	path = "xyz"
+    	modification {
+    		select = "."
+	   		value = "x"
+    	}
+    }
+    file {
+    	path = "abc"
+    	modification {
+    		select = "."
+	   		value = "x"
+    	}
+    }
+}

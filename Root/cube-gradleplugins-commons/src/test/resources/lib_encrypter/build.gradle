@@ -1,0 +1,17 @@
+buildscript {
+    repositories {
+        mavenLocal()
+		maven { url "http://repo.maven.apache.org/maven2" }        
+    }
+    dependencies {
+        classpath group: 'earth.cube.gradle.plugins', name: 'cube-gradleplugins-commons',
+                  version: '1.0-SNAPSHOT'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'earth.cube.commons'
+
+ext.lib_passphrase = lib_passphrase_default
+
+// tasks encryptLibs, decryptLibs
