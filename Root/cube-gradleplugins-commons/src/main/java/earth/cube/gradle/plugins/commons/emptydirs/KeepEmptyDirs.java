@@ -9,7 +9,6 @@ import org.eclipse.jgit.ignore.IgnoreNode;
 import org.eclipse.jgit.ignore.IgnoreNode.MatchResult;
 import org.eclipse.jgit.lib.Repository;
 import org.gradle.api.logging.Logger;
-import org.gradle.api.tasks.TaskAction;
 
 import earth.cube.gradle.plugins.commons.utils.FileUtils;
 import earth.cube.gradle.plugins.commons.utils.Flag;
@@ -60,12 +59,14 @@ public class KeepEmptyDirs {
 	public void enableProbe() {
 		_bProbe = true;
 	}
+	
+	public void setLogger(Logger logger) {
+		_logger = logger;
+	}
 
 	
-	@TaskAction
 	public int mark() throws IOException {
 		_nCreated = 0;
-		init();
 		final Flag alreadyWarned = new Flag();
 		
 		_keep.process(_gitWorkTree, new IVisitor() {

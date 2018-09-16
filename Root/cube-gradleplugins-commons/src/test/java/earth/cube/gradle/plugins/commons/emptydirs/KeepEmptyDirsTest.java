@@ -28,8 +28,8 @@ public class KeepEmptyDirsTest {
 		               _dirs.add(file.getParent().toString());
 		          }
 		          return FileVisitResult.CONTINUE;
-		      }
-		     });
+		     }
+		});
 	}
 	
 	protected void checkMarkers(String... saExpected) throws IOException {

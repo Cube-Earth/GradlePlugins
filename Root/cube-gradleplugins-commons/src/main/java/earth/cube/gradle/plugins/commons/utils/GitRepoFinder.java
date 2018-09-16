@@ -9,11 +9,18 @@ import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 public class GitRepoFinder {
 	
 	public static Repository findGitRepo(File currentDir) throws IOException {
+		return findGitRepo(currentDir, true);
+	}
+
+	public static Repository findGitRepo(File currentDir, boolean bRaiseException) throws IOException {
 		FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
 		repositoryBuilder.setMustExist(true);
 		repositoryBuilder.findGitDir(currentDir);
 		if(repositoryBuilder.getGitDir() == null)
-			throw new IllegalStateException("Could not determine GIT database directory!");
+			if(bRaiseException)
+				throw new IllegalStateException("Could not determine GIT database directory!");
+			else
+				return null;
 		return repositoryBuilder.build();
 	}
 

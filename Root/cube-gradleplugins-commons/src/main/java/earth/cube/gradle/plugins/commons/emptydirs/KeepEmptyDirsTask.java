@@ -15,6 +15,7 @@ public class KeepEmptyDirsTask extends DefaultTask {
 		KeepEmptyDirs worker = new KeepEmptyDirs(GitRepoFinder.findGitRepo(getProject().getRootDir()));
 		if(getProject().hasProperty("probe"))
 			worker.enableProbe();
+		worker.setLogger(getLogger());
 		return worker.mark();
 	}
 

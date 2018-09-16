@@ -88,16 +88,16 @@ public class FileSet {
 			}
 		processFileSets(dir);
 		
-		
-		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
-			for (Path entry : stream) {
-				if(Files.isDirectory(entry))
-					processDir(entry, sPath + entry.getFileName() + '/');
-				else
-					if(!bSkipDir && !_bDirsOnly && _pattern.matcher(sPath + entry.getFileName()).matches() && _rules.evaluateIncluded(null, sPath + entry.getFileName()))
-						_visitor.visitFile(entry);
-			}
-		}		
+		if(Files.exists(dir))
+			try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
+				for (Path entry : stream) {
+					if(Files.isDirectory(entry))
+						processDir(entry, sPath + entry.getFileName() + '/');
+					else
+						if(!bSkipDir && !_bDirsOnly && _pattern.matcher(sPath + entry.getFileName()).matches() && _rules.evaluateIncluded(null, sPath + entry.getFileName()))
+							_visitor.visitFile(entry);
+				}
+			}		
 		
 	}
 

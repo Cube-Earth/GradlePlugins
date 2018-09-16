@@ -6,6 +6,7 @@ import org.gradle.api.Project;
 import earth.cube.gradle.plugins.commons.dars.InitDar;
 import earth.cube.gradle.plugins.commons.eclipse_launcher.Launcher;
 import earth.cube.gradle.plugins.commons.emptydirs.KeepEmptyDirsTask;
+import earth.cube.gradle.plugins.commons.gitignoretpl.GitIgnoreTplTask;
 import earth.cube.gradle.plugins.commons.lib_encrypter.LibDecrypter;
 import earth.cube.gradle.plugins.commons.lib_encrypter.LibEncrypter;
 import earth.cube.gradle.plugins.commons.purge.PurgeTask;
@@ -28,6 +29,7 @@ public class CommonsPlugin implements Plugin<Project> {
         
         project.getTasks().create("keepEmptyDirs", KeepEmptyDirsTask.class);
         project.getTasks().create("purge", PurgeTask.class);
+        project.getTasks().create("extendGitIgnore", GitIgnoreTplTask.class);
 
         new Shortener(project).prepare();
     	

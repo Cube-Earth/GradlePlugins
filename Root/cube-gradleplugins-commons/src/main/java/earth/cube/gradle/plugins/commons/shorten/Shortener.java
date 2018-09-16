@@ -23,6 +23,9 @@ import org.gradle.api.publish.maven.MavenPublication;
 import org.gradle.api.tasks.SourceSet;
 import org.gradle.api.tasks.StopExecutionException;
 
+import earth.cube.gradle.plugins.commons.gitignoretpl.GitIgnoreTpl;
+import earth.cube.gradle.plugins.commons.utils.GitRepoFinder;
+
 public class Shortener {
 	
 	private Project _project;
@@ -54,6 +57,15 @@ public class Shortener {
 								}
 								for(File dir : sourceSet.getResources().getSrcDirs()) {
 									dir.mkdirs();
+								}
+								try {
+									GitIgnoreTpl ignore = new GitIgnoreTpl(GitRepoFinder.findGitRepo(project.getRootDir(), false));
+									ignore.addIgnore(project.getBuildDir().toPath(), true);
+									ignore.addIgnore(new File(project.getProjectDir(), "bin").toPath(), true);
+									ignore.addIgnore(new File(project.getProjectDir(), "target").toPath(), true);
+									ignore.save();
+								} catch (IOException e) {
+									throw new RuntimeException(e);
 								}
 							}
 						}
