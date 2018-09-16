@@ -1,0 +1,33 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+ext.maven_aware=true
+
+group "earth.cube.test"
+
+
+buildscript {
+    repositories {
+        mavenLocal()
+		maven { url "http://repo.maven.apache.org/maven2" }        
+    }
+    dependencies {
+        classpath group: 'earth.cube.gradle.plugins', name: 'cube-gradleplugins-commons-test', version: '1.0.0'
+    }
+}
+
+apply plugin: 'earth.cube.commons-test'
+
+
+task test2 (dependsOn: 'eclipse') {
+	doLast {
+	}
+}
+
+task test3() {
+	println configurations.compile.resolve()
+}
+
+
+// gradle :shortener:eclipse
+// gradle :shortener:test3

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="1.5.0">
+<project-modules id="moduleCoreId" project-version="2.0">
 	<wb-module deploy-name="cube-gradleplugins-commons-test">
 		<wb-resource deploy-path="/" source-path="src/main/resources"/>
 		<wb-resource deploy-path="/" source-path="src/main/java"/>
-		<wb-resource deploy-path="/" source-path="/src/main/java"/>
-		<wb-resource deploy-path="/" source-path="/src/main/resources"/>
-		<wb-resource deploy-path="/" source-path="/src/test/java"/>
-		<wb-resource deploy-path="/" source-path="/src/test/resources"/>
+		<dependent-module deploy-path="../" handle="module:/resource/cube-gradleplugins-commons/cube-gradleplugins-commons">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
 	</wb-module>
 </project-modules>

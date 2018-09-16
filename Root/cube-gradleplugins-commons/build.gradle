@@ -17,12 +17,15 @@ apply plugin: "com.gradle.plugin-publish"
 
 group "earth.cube.gradle.plugins"
 
-version "1.0-SNAPSHOT"
+version "1.0.0"
 
 sourceCompatibility = 1.7
 
 dependencies {
 	compile gradleApi()
+	compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.8.0.201706111038-r'
+	testCompile group: 'com.google.jimfs', name: 'jimfs', version: '1.1'
+//    testCompile gradleTestKit()
 }
 
 pluginBundle {

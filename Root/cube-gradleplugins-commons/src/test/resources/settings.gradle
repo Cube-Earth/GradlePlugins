@@ -1,1 +1,1 @@
-include ':eclipse_launcher', ':xml_modification', ':xml_query', ':lib_encrypter'
+include ':eclipse_launcher', ':xml_modification', ':xml_query', ':lib_encrypter', ':shortener'

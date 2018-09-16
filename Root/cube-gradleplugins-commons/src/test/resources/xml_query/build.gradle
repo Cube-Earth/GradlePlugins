@@ -21,10 +21,12 @@ task query {
 	}
 }
 
+/*
 task copy(type: Copy) {
     from file("test.txt")
     into xml.getString("$projectDir/" + "test.xml".toLowerCase(), "/level1/level2/@filepath")
 }
+*/
 
 task xml {
 	doLast {

@@ -1,0 +1,48 @@
+// call 'gradle publishPlugins' for uploading this plugin to the gradle plugin portal
+
+ext.maven_aware=true
+
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "com.gradle.publish:plugin-publish-plugin:0.9.8"
+  }
+}
+
+apply plugin: "com.gradle.plugin-publish"
+
+group "earth.cube.gradle.plugins"
+
+version "1.0-SNAPSHOT"
+
+sourceCompatibility = 1.7
+
+dependencies {
+	compile gradleApi()
+	compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.8.0.201706111038-r'
+	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+//	compile group: 'org.ehcache', name: 'ehcache', version: '3.4.0'
+
+	testCompile group: 'commons-io', name: 'commons-io', version: '2.5'
+
+
+}
+
+pluginBundle {
+	website = 'https://github.com/Cube-Earth/GradlePlugins/tree/master/Root/cube-gradleplugins-scm'
+	vcsUrl = 'https://github.com/Cube-Earth/GradlePlugins/tree/master/Root/cube-gradleplugins-scm'
+	description = 'Plugin for preparing projects for svn / git.'
+	tags = ['cube.earth', 'git', 'svn', 'scm', 'continuous delivery', 'release']
+	
+	plugins {
+		githubPlugin {
+			id = 'earth.cube.scm'
+			version = '1.0.0'
+	 		displayName = 'scm plugin (cube.earth)'
+		}
+	}
+}

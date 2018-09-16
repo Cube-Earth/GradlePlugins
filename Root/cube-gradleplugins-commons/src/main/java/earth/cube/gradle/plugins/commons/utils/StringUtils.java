@@ -69,5 +69,20 @@ public class StringUtils {
 		List<String> values = split(sSource, sDelim, cEscapeChar, converter);
 		return values == null ? null : values.toArray(new String[values.size()]);
 	}
+	
+	
+	public static String[] splitStrict(String sSource, String sDelim) {
+		List<String> values = new ArrayList<>();
+		
+		int j = 0;
+		int i = sSource.indexOf(sDelim);
+		while(i != -1) {
+			values.add(sSource.substring(j, i));
+			j = i + 1;
+			i = sSource.indexOf(sDelim, j);
+		}
+		values.add(sSource.substring(j));
+		return values.toArray(new String[values.size()]);
+	}
 
 }

@@ -12,11 +12,13 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'earth.cube.commons'
 
+/*
 task launch (type: earth.cube.gradle.plugins.commons.eclipse_launcher.Launcher) {
 //	__prepare "/tmp/xyz/eclipse"
-	application = "earth.cube.eclipse.headless_builder.headlessbuilder"
+	application = "earth.cube.eclipse.darbuilder.headless"
 	installationDir = "/tmp/xyz/eclipse"
 	workspaceDir = "/tmp/xyz/workspace"
 	addPlugin "https://github.com/Cube-Earth/ArtifactDownloader/releases/download/1.0/cube-artifactdownloader-1.0.0.jar"
 	addArguments "-projectsDir", "/tmp/xyz/projects", "-outputDir", "/tmp/xyz/output"
 }
+*/
